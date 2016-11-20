@@ -1,6 +1,11 @@
 # Udacity_PopularMovies
 This repository has been created to version control my "popular movies" app intended to be submitted. Project is for Udacity's "Android Developer Nanaodegree by Google" nanodegree program. This project is number 1/8 and also 2/8 (different branches for the two submissions).
 
+
+# NOTE!!!
+My api key has not been included (obviously). Please go to the api.xml file found inside the res directory and insert your api key there.
+
+
 Following content is copied from Udacity's project page.
 
 # Project Overview 
