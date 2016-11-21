@@ -4,7 +4,10 @@ This repository has been created to version control my "popular movies" app inte
 
 # NOTE!!!
 My api key has not been included (obviously). Please create a new string resource with the name="api_key", it should look something like this:
+
+```
 <string name="api_key">YOUR API KEY </string>
+```
 
 
 Following content is copied from Udacity's project page.
