@@ -1,11 +1,15 @@
 package com.example.arun.popularmovies;
 
 import android.content.ContentUris;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
@@ -14,10 +18,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -27,37 +33,55 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 import static android.view.View.VISIBLE;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ListView mMovieListView;
-    private MovieAdapter mAdapter;
-
+    @BindView(R.id.Movie_RecycleView) RecyclerView mMovieRecycleView;
+    private MovieRecyclerAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
-        mMovieListView = (ListView) findViewById(R.id.movieListView);
-        mAdapter = new MovieAdapter(this, new ArrayList<Movie>());
-        mMovieListView.setAdapter(mAdapter);
-        mMovieListView.setEmptyView(findViewById(R.id.EmptyList_TextVIew));
+        mAdapter = new MovieRecyclerAdapter(this, new ArrayList<Movie>());
+        mMovieRecycleView.setAdapter(mAdapter);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        mMovieRecycleView.setLayoutManager(linearLayoutManager);
+
+        if(isNwConnected(this)){
+            FetchMovieAsyncTask task = new FetchMovieAsyncTask();
+            task.execute("popular");
+//            mMovieListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                @Override
+//                public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+//                    Intent intent = new Intent(MainActivity.this, MovieActivity.class);
+//                    Movie clickedMovie = mAdapter.getItem(position);
+//                    intent.putExtra("MovieObj", clickedMovie);
+//                    startActivity(intent);
+//                }
+//            });
+        }
 
 
-        FetchMovieAsyncTask task = new FetchMovieAsyncTask();
-        task.execute("popular");
+    }
 
-        mMovieListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                Intent intent = new Intent(MainActivity.this, MovieActivity.class);
-                Movie clickedMovie = mAdapter.getItem(position);
-                intent.putExtra("MovieObj", clickedMovie);
-                startActivity(intent);
-            }
-        });
+    public static boolean isNwConnected(Context context) {
+        if (context == null) {
+            return true;
+        }
+        ConnectivityManager connectivityManager =
+                (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo nwInfo = connectivityManager.getActiveNetworkInfo();
+        if (nwInfo != null && nwInfo.isConnectedOrConnecting()) {
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -91,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(ArrayList<Movie> movies) {
             mAdapter.addAll(movies);
+
         }
 
         @Override

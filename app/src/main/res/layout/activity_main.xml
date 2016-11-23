@@ -14,26 +14,31 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <RelativeLayout
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+
+        <!--<ListView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:id="@+id/movieListView"-->
+            <!--android:divider="@color/colorAccent"-->
+            <!--android:dividerHeight="1dp"/>-->
+
+        <!--<TextView-->
+            <!--android:text="@string/no_movies"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:id="@+id/EmptyList_TextVIew"-->
+            <!--android:textColor="@color/hintTextColor"-->
+            <!--android:gravity="center"-->
+            <!--android:visibility="invisible"/>-->
+
+    <!--</RelativeLayout>-->
+
+
+    <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/movieListView"
-            android:divider="@color/colorAccent"
-            android:dividerHeight="1dp"/>
-
-        <TextView
-            android:text="No Movies"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/EmptyList_TextVIew"
-            android:textColor="@color/hintTextColor"
-            android:gravity="center"
-            android:visibility="invisible"/>
-
-    </RelativeLayout>
-
+        android:layout_height="match_parent"
+        android:id="@+id/Movie_RecycleView"/>
 </LinearLayout>

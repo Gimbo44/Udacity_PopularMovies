@@ -5,4 +5,7 @@
     <string name="plot">Plot</string>
     <string name="sort_by">Sort By</string>
     <string name="popular">Popular</string>
+    <string name="rating_tool">5</string>
+    <string name="date_tool">1994-09-19</string>
+    <string name="no_movies">No Movies</string>
 </resources>
