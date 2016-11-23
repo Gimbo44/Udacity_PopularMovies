@@ -1,11 +1,14 @@
 package com.example.arun.popularmovies;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -15,12 +18,13 @@ import java.util.ArrayList;
  * Created by arun on 23/11/16.
  */
 
-public class MovieRecyclerAdapter extends RecyclerView.Adapter<MovieRecyclerAdapter.MovieViewHolder> {
+public class MovieRecyclerAdapter extends RecyclerView.Adapter<MovieRecyclerAdapter.MovieViewHolder>{
 
     private Context mContext;
     private ArrayList<Movie> mMovieList;
+    private static String LOG_TAG = MovieRecyclerAdapter.class.getSimpleName();
 
-    public static class MovieViewHolder extends RecyclerView.ViewHolder{
+    public class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         ImageView mPoster;
         Movie mMovie;
@@ -28,9 +32,16 @@ public class MovieRecyclerAdapter extends RecyclerView.Adapter<MovieRecyclerAdap
         public MovieViewHolder(View itemView) {
             super(itemView);
             mPoster = (ImageView) itemView.findViewById(R.id.Movie_ImageView);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(mContext, MovieActivity.class);
+            intent.putExtra("MovieObj", mMovie);
+            mContext.startActivity(intent);
         }
     }
-
 
     public MovieRecyclerAdapter(Context context, ArrayList<Movie> movieList) {
         mContext = context;
@@ -39,8 +50,10 @@ public class MovieRecyclerAdapter extends RecyclerView.Adapter<MovieRecyclerAdap
 
     @Override
     public MovieViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(mContext).inflate(R.layout.movie_listview_row, parent, false);
-        return new MovieViewHolder(view);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.movie_listview_row, parent, false);
+        MovieViewHolder vh = new MovieViewHolder(view);
+
+        return vh;
     }
 
     @Override

@@ -17,7 +17,7 @@ public class MovieActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         if(intent.hasExtra("MovieObj")){
-            Movie movie = (Movie) intent.getSerializableExtra("MovieObj");
+            Movie movie = intent.getParcelableExtra("MovieObj");
             setTitle(movie.getTitle());
             TextView plotTextView = (TextView) findViewById(R.id.plotTextView);
             ImageView posterImageView = (ImageView) findViewById(R.id.Movie_ImageView);

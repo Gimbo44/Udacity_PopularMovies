@@ -9,11 +9,13 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -38,7 +40,7 @@ import butterknife.ButterKnife;
 
 import static android.view.View.VISIBLE;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
 
     @BindView(R.id.Movie_RecycleView) RecyclerView mMovieRecycleView;
     private MovieRecyclerAdapter mAdapter;
@@ -51,19 +53,20 @@ public class MainActivity extends AppCompatActivity {
 
         mAdapter = new MovieRecyclerAdapter(this, new ArrayList<Movie>());
         mMovieRecycleView.setAdapter(mAdapter);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        mMovieRecycleView.setLayoutManager(linearLayoutManager);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this,2);
+        mMovieRecycleView.setLayoutManager(gridLayoutManager);
+        mMovieRecycleView.hasOnClickListeners();
 
         if(isNwConnected(this)){
             FetchMovieAsyncTask task = new FetchMovieAsyncTask();
             task.execute("popular");
+
+
+
 //            mMovieListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //                @Override
 //                public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-//                    Intent intent = new Intent(MainActivity.this, MovieActivity.class);
-//                    Movie clickedMovie = mAdapter.getItem(position);
-//                    intent.putExtra("MovieObj", clickedMovie);
-//                    startActivity(intent);
+//
 //                }
 //            });
         }
