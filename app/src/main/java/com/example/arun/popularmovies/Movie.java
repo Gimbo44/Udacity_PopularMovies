@@ -10,10 +10,12 @@ import java.util.Date;
 
 /**
  * Created by arun on 19/11/16.
+ * A simple object designed to hold json movie data.
  */
 
 public class Movie implements Parcelable {
 
+    //Movie features
     private String LOG_TAG = Movie.class.getSimpleName();
     private long mID;
     private String mTitle;
@@ -26,11 +28,17 @@ public class Movie implements Parcelable {
         mID = id;
         mTitle = title;
         mDate = date;
+        //Required to append the prefix url to the given image url to comply with the api's standards.
         mImgUrl = "http://image.tmdb.org/t/p/w780" + imgUrl;
         mRating = rating;
         mPlot = plot;
     }
 
+    /*
+    ===================================================================
+                                Simple Getters
+    ===================================================================
+     */
     public long getID() {
         return mID;
     }
@@ -55,7 +63,11 @@ public class Movie implements Parcelable {
         return mPlot;
     }
 
-
+    /*
+    ===================================================================
+                       Auto Generated Parcelable methods
+    ===================================================================
+     */
     @Override
     public int describeContents() {
         return 0;
