@@ -54,8 +54,13 @@ You app will:
 --------------------------------
 |In a background thread, app queries the /movie/popular or /movie/top_rated API for the sort criteria specified in the settings menu.
 
-### General Project Guidelines ### 
+### General Project Guidelines  ### 
 |MEETS SPECIFICATIONS
 --------------------------------
 |App conforms to common standards found in the Android Nanodegree General Project Guidelines (NOTE: For Stage 1 of the Popular Movies App, it is okay if the app does not restore the data using onSaveInstanceState/onRestoreInstanceState)
+
+# What Will I Learn After Stage 2?
+
+- You will build a fully featured application that looks and feels natural on the latest Android operating system (Nougat, as of November 2016).
+
 
