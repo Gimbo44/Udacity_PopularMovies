@@ -8,4 +8,6 @@
     <string name="rating_tool">5</string>
     <string name="date_tool">1994-09-19</string>
     <string name="no_movies">No Movies</string>
+    <string name="ratingFormat">Rating: %.0f/10</string>
+    <string name="releaseDateFormat">Date: %s</string>
 </resources>

@@ -24,6 +24,7 @@ public class Movie implements Parcelable {
     private double mRating;
     private String mPlot;
 
+
     public Movie(long id, String title, String date, String imgUrl, double rating, String plot) {
         mID = id;
         mTitle = title;

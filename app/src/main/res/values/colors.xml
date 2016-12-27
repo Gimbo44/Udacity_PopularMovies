@@ -10,4 +10,5 @@
     <color name="hintTextColor">#7fffffff</color>
     <color name="primaryDarkTextColor">#ffffff</color>
     <color name="SecondaryDarkTextColor">#b3ffffff</color>
+    <color name="dividerColor">#bdbdbd</color>
 </resources>
