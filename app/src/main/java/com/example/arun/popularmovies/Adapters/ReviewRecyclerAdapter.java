@@ -7,8 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.arun.popularmovies.APIObjects.Movie;
 import com.example.arun.popularmovies.R;
-import com.example.arun.popularmovies.Review;
+import com.example.arun.popularmovies.APIObjects.Review;
 
 import java.util.ArrayList;
 
@@ -25,7 +26,7 @@ public class ReviewRecyclerAdapter extends RecyclerView.Adapter<ReviewRecyclerAd
 
 
     /**
-     * A ViewHolder class designed at holding a view and a {@link com.example.arun.popularmovies.Movie}
+     * A ViewHolder class designed at holding a view and a {@link Movie}
      * Object.
      */
     public class ReviewViewHolder extends RecyclerView.ViewHolder{

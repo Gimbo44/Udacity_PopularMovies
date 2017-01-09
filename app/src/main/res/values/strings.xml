@@ -10,4 +10,7 @@
     <string name="no_movies">No Movies</string>
     <string name="ratingFormat">Rating: %.0f/10</string>
     <string name="releaseDateFormat">Date: %s</string>
+    <string name="addFavourite">Removed from favourites</string>
+    <string name="removeFavourite">Added to favourites</string>
+    <string name="favourites">Favourites</string>
 </resources>

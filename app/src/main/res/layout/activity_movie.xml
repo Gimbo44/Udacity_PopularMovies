@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:app="http://schemas.android.com/apk/res-auto"
               xmlns:tools="http://schemas.android.com/tools"
-              android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:fabSize="normal"
+        app:srcCompat="@drawable/ic_favorite_border_white_24dp"
+        android:id="@+id/floatingActionButton"
+        app:elevation="8dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -23,7 +34,8 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
-                android:paddingTop="10dp">
+                android:paddingTop="10dp"
+                android:paddingBottom="20dp">
 
                 <LinearLayout
                     android:orientation="horizontal"
@@ -44,10 +56,10 @@
                             android:adjustViewBounds="true"/>
                     </FrameLayout>
 
-                    <LinearLayout
+                    <RelativeLayout
                         android:orientation="vertical"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="2">
 
                         <TextView
@@ -57,7 +69,8 @@
                             tools:text="2015"
                             android:padding="10dp"
                             android:textSize="18sp"
-                            android:textStyle="normal|bold"/>
+                            android:textStyle="normal|bold"
+                            android:layout_alignParentTop="true"/>
 
                         <TextView
                             android:layout_width="match_parent"
@@ -65,9 +78,10 @@
                             android:id="@+id/RatingTextView"
                             tools:text="8.1/10"
                             android:paddingLeft="10dp"
-                            android:textColor="@android:color/black"/>
+                            android:textColor="@android:color/black"
+                            android:layout_below="@+id/ReleaseYearTextView"/>
 
-                    </LinearLayout>
+                    </RelativeLayout>
 
                 </LinearLayout>
 
@@ -146,4 +160,6 @@
         </LinearLayout>
     </ScrollView>
 
-</LinearLayout>
+
+
+</RelativeLayout>

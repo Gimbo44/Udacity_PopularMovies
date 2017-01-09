@@ -1,4 +1,4 @@
-package com.example.arun.popularmovies;
+package com.example.arun.popularmovies.APIObjects;
 
 /**
  * Created by arun on 27/12/16.

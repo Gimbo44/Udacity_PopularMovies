@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.example.arun.popularmovies.Movie;
+import com.example.arun.popularmovies.APIObjects.Movie;
 import com.example.arun.popularmovies.MovieActivity;
 import com.example.arun.popularmovies.R;
 import com.squareup.picasso.Picasso;
@@ -28,7 +28,7 @@ public class MovieRecyclerAdapter extends RecyclerView.Adapter<MovieRecyclerAdap
 
 
     /**
-     * A ViewHolder class designed at holding a view and a {@link com.example.arun.popularmovies.Movie}
+     * A ViewHolder class designed at holding a view and a {@link Movie}
      * Object.
      */
     public class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

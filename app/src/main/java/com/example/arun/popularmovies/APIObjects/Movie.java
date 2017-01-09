@@ -1,12 +1,9 @@
-package com.example.arun.popularmovies;
+package com.example.arun.popularmovies.APIObjects;
 
-import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.io.Serializable;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import static android.R.attr.path;
 
 /**
  * Created by arun on 19/11/16.
@@ -14,6 +11,8 @@ import java.util.Date;
  */
 
 public class Movie implements Parcelable {
+
+    private String IMG_URI = "http://image.tmdb.org/t/p/w780";
 
     //Movie features
     private String LOG_TAG = Movie.class.getSimpleName();
@@ -30,7 +29,7 @@ public class Movie implements Parcelable {
         mTitle = title;
         mDate = date;
         //Required to append the prefix url to the given image url to comply with the api's standards.
-        mImgUrl = "http://image.tmdb.org/t/p/w780" + imgUrl;
+        mImgUrl = IMG_URI + imgUrl;
         mRating = rating;
         mPlot = plot;
     }
@@ -54,6 +53,11 @@ public class Movie implements Parcelable {
 
     public String getImgUrl() {
         return mImgUrl;
+    }
+
+    public String getSplicedImgUrl(){
+        String imgTag = mImgUrl.substring(mImgUrl.lastIndexOf('/') + 1);
+        return "/" + imgTag;
     }
 
     public double getRating() {
