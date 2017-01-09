@@ -13,6 +13,5 @@
         android:id="@+id/Movie_ImageView"
         android:layout_weight="1"
         android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
-        android:padding="5dp"/>
+        android:scaleType="fitXY"/>
 </LinearLayout>

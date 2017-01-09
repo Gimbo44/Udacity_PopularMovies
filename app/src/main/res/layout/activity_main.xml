@@ -5,37 +5,10 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.arun.popularmovies.MainActivity"
     android:background="@color/backgroundDark"
     android:gravity="center"
     android:orientation="vertical">
-
-    <!--<RelativeLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent">-->
-
-        <!--<ListView-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:id="@+id/movieListView"-->
-            <!--android:divider="@color/colorAccent"-->
-            <!--android:dividerHeight="1dp"/>-->
-
-        <!--<TextView-->
-            <!--android:text="@string/no_movies"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:id="@+id/EmptyList_TextVIew"-->
-            <!--android:textColor="@color/hintTextColor"-->
-            <!--android:gravity="center"-->
-            <!--android:visibility="invisible"/>-->
-
-    <!--</RelativeLayout>-->
-
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"

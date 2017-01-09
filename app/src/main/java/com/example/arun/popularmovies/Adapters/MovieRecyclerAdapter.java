@@ -1,4 +1,4 @@
-package com.example.arun.popularmovies;
+package com.example.arun.popularmovies.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,8 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.example.arun.popularmovies.APIObjects.Movie;
+import com.example.arun.popularmovies.MovieActivity;
+import com.example.arun.popularmovies.R;
 import com.squareup.picasso.Picasso;
-
 import java.util.ArrayList;
 
 /**
@@ -19,13 +21,14 @@ import java.util.ArrayList;
 
 public class MovieRecyclerAdapter extends RecyclerView.Adapter<MovieRecyclerAdapter.MovieViewHolder>{
 
+
     private Context mContext;
-    private ArrayList<Movie> mMovieList;
+    private ArrayList<Movie> mDataList;
     private static String LOG_TAG = MovieRecyclerAdapter.class.getSimpleName();
 
 
     /**
-     * A ViewHolder class designed at holding a view and a {@link com.example.arun.popularmovies.Movie}
+     * A ViewHolder class designed at holding a view and a {@link Movie}
      * Object.
      */
     public class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -48,13 +51,15 @@ public class MovieRecyclerAdapter extends RecyclerView.Adapter<MovieRecyclerAdap
         }
     }
 
-    public MovieRecyclerAdapter(Context context, ArrayList<Movie> movieList) {
+
+    public MovieRecyclerAdapter(Context context, ArrayList<Movie> dataList) {
         mContext = context;
-        mMovieList = movieList;
+        mDataList = dataList;
     }
 
     @Override
     public MovieViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
         View view = LayoutInflater.from(mContext).inflate(R.layout.movie_listview_row, parent, false);
         MovieViewHolder vh = new MovieViewHolder(view);
 
@@ -63,23 +68,24 @@ public class MovieRecyclerAdapter extends RecyclerView.Adapter<MovieRecyclerAdap
 
     @Override
     public void onBindViewHolder(MovieViewHolder holder, int position) {
-        holder.mMovie = mMovieList.get(position);
+
+        holder.mMovie = (Movie) mDataList.get(position);
         //Using the Picasso library to handle external image resourcing
         Picasso.with(mContext).load(holder.mMovie.getImgUrl()).into(holder.mPoster);
     }
 
     @Override
     public int getItemCount() {
-        return mMovieList.size();
+        return mDataList.size();
     }
 
     /**
      * Method designed to replicate ArrayAdapter.addAll, takes an arraylist of movies and
      * sets the adapters movie list to the new list.
-     * @param movies, arraylist of {@link com.example.arun.popularmovies.Movie} objects
+     * @param data, arraylist of T objects
      */
-    public void addAll(ArrayList<Movie> movies){
-        mMovieList = movies;
+    public void addAll(ArrayList<Movie> data){
+        mDataList = data;
         notifyDataSetChanged();
     }
 
@@ -87,7 +93,7 @@ public class MovieRecyclerAdapter extends RecyclerView.Adapter<MovieRecyclerAdap
      * Method designed to reset the adapters arraylist, similar to the ArrayAdapter.clear method
      */
     public void clear(){
-        mMovieList = new ArrayList<>();
+        mDataList = new ArrayList<>();
         notifyDataSetChanged();
     }
 
